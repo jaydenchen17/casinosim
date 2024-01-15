@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Student Blog
+title: Casino Home
+permalink: /casinoroom
 ---
 
 <html lang="en">
@@ -10,7 +11,7 @@ title: Student Blog
     <title>Your Webpage Title</title>
     <style>
         body {
-            background-image: url('images/casino.png');
+            background-image: url('images/casinoroom.png');
             background-size: cover;
             background-position: center center;
             background-attachment: fixed;
@@ -37,13 +38,30 @@ title: Student Blog
             font-size: 1.2em;
             line-height: 1.5;
         }
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+        .button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #3498db; /* Button color */
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <div class="textbox">
-        <h1>Welcome to Casino Sim</h1>
-        <p>Gamble without the risk of losing any real money! Log in or create an account to start!</p>
+        <h1>Welcome to the Casino Room</h1>
+        <p>Choose the game you'd like to participate in!</p>       
+        <div class="button-container">
+            <a href="your_first_link_here" class="button">Slots</a>
+            <a href="blackjack" class="button">Blackjack</a>
+        </div>
     </div>
 </body>
 </html>
-

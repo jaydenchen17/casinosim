@@ -5,6 +5,48 @@ permalink: /racebet
 ---
 
 <html lang="en">
+<body>
+    <div class="textbox">
+        <h1>Welcome to the Racetrack!</h1>
+        <p>Please place your bets after clicking the `Start Race` button below!</p>       
+    </div>
+</body>
+<br>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Webpage Title</title>
+    <style>
+        body {
+            background-image: url('images/racebetbackdrop.png');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #ffffff; /* Text color */
+            text-align: center;
+            padding: 50px; /* Add padding to the content */
+        }
+        .textbox {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #ffffff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+    </style>
+</head>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,9 +85,9 @@ permalink: /racebet
         var userChoice;
         function startRace() {
             // Prompt the user to input a wager
-            userBet = prompt("Enter the amount you want to wager (at least $5):");
+            userBet = prompt("Enter the amount you want to wager (at least $10):");
             // Check if the input is valid
-            if (userBet >= 5) {
+            if (userBet >= 10) {
                 // Prompt the user to pick a car
                 userChoice = prompt("Choose the car you want to bet on (blue or red):");
                 // Check if the user picked a valid car
@@ -108,7 +150,7 @@ permalink: /racebet
 </head>
 <body>
     <div class="race-track">
-        <img src="images/racetrack.png" alt="Race Track" width="500" height="200">
+        <img src="images/racetrack.png" alt="Race Track" width="1000" height="200">
         <img id="blueCar" class="car" src="images/blueracecar.png" alt="Blue Car" width="100">
         <img id="redCar" class="car" src="images/redracecar.png" alt="Red Car" width="100">
     </div>
