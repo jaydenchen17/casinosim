@@ -149,57 +149,43 @@ permalink: /racebet
     </script>
     <script>
     var blueCarInterval, redCarInterval;
-    var userBalance = 200; // Starting balance
+    var userBalance = 200;
     var userBet;
     var userChoice;
     function startRace() {
-        // Prompt the user to input a wager
         userBet = prompt("Enter the amount you want to wager (at least $10):");
-        // Check if the input is valid
         if (userBet >= 10 && userBet <= userBalance) {
-            // Deduct the bet amount from the user's balance
             userBalance -= userBet;
-            // Display the updated balance
             alert("Your current balance: $" + userBalance);
-            // Prompt the user to pick a car
             userChoice = prompt("Choose the car you want to bet on (blue or red):");
-            // Check if the user picked a valid car
             if (userChoice.toLowerCase() === 'blue' || userChoice.toLowerCase() === 'red') {
-                // Get the cars
                 var blueCar = document.getElementById('blueCar');
                 var redCar = document.getElementById('redCar');
-                // Determine the winner based on specified probabilities
                 var winner;
                 if (userChoice.toLowerCase() === 'red') {
                     winner = Math.random() < 0.3 ? 'red' : 'blue';
                 } else {
                     winner = Math.random() < 0.7 ? 'red' : 'blue';
                 }
-                // Set positions based on the winner
                 blueCar.style.left = winner === 'blue' ? '80%' : '0';
                 redCar.style.left = winner === 'red' ? '80%' : '0';
-                // Disable the button after the race starts
                 document.getElementById('raceButton').disabled = true;
-                // Display the result
                 setTimeout(function () {
                     var resultMessage;
                     if (winner === userChoice.toLowerCase()) {
-                        // Update the user's balance on winning
                         userBalance += userBet * 2;
                         resultMessage = 'Congratulations! You won $' + userBet * 2;
                     } else {
                         resultMessage = 'Sorry, you lost $' + userBet;
                     }
-                    // Display the updated balance
                     alert(resultMessage + "\nYour current balance: $" + userBalance);
-                    stopCars(); // Stop the cars after the race is finished
-                }, 3000);  // Adjust the timeout duration to match the transition duration
-                // Move the cars with different speeds using setInterval
+                    stopCars(); 
+                }, 3000);  
                 blueCarInterval = setInterval(function () {
-                    moveCar(blueCar, 5); // Move the blue car
+                    moveCar(blueCar, 5);
                 }, 80);
                 redCarInterval = setInterval(function () {
-                    moveCar(redCar, 4.99); // Move the red car
+                    moveCar(redCar, 4.99); 
                 }, 80);
             } else {
                 alert("Please choose a valid car (blue or red).");
