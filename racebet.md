@@ -57,7 +57,7 @@ permalink: /racebet
         }
         .race-track {
             position: relative;
-            width: 80%;
+            width: 100%;
             margin: 0 auto;
         }
         .car {
