@@ -43,7 +43,7 @@ title: Student Blog
     <div class="textbox">
         <h1>Welcome to Casino Sim</h1>
         <p>Gamble without the risk of losing any real money! Log in or create an account to start!</p>
-    </div>
-</body>
-</html>
-
+         <div class="button-container">
+            <a href="casinoroom" class="button">Casino Room</a>
+            <a href="racebet" class="button">Race Track</a>
+            <a href="login" class="button">Create An Account</a>
