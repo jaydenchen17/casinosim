@@ -243,6 +243,6 @@ permalink: /blackjack
       updateDealerScore();
     }
   </script>
-
+<a href=" " class="button">Back to Home</a>
 </body>
 </html>
