@@ -61,7 +61,7 @@ permalink: /casinoroom
         <div class="button-container">
             <a href="your_first_link_here" class="button">Slots</a>
             <a href="blackjack" class="button">Blackjack</a>
-            <a href="dicegamelink" class="button">Craps</a>
+            <a href="Dice_game" class="button">Dice Game</a>
 
         </div>
     </div>

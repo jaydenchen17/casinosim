@@ -12,6 +12,9 @@ permalink: /Dice_game
 <style>
     body {
         font-family: Arial, sans-serif;
+        background-image: url('images/dice.jpg)');
+        background-size: cover;
+        background-repeat: no-repeat;
     }
 </style>
 </head>
