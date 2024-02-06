@@ -98,9 +98,9 @@ permalink: /racebet
                     // Determine the winner based on specified probabilities
                     var winner;
                     if (userChoice.toLowerCase() === 'red') {
-                        winner = Math.random() < 0.3 ? 'red' : 'blue';
+                        winner = Math.random() < 0.4 ? 'red' : 'blue';
                     } else {
-                        winner = Math.random() < 0.7 ? 'red' : 'blue';
+                        winner = Math.random() < 0.6 ? 'red' : 'blue';
                     }
                     // Set positions based on the winner
                     blueCar.style.left = winner === 'blue' ? '80%' : '0';
@@ -163,9 +163,9 @@ permalink: /racebet
                 var redCar = document.getElementById('redCar');
                 var winner;
                 if (userChoice.toLowerCase() === 'red') {
-                    winner = Math.random() < 0.3 ? 'red' : 'blue';
+                    winner = Math.random() < 0.4 ? 'red' : 'blue';
                 } else {
-                    winner = Math.random() < 0.7 ? 'red' : 'blue';
+                    winner = Math.random() < 0.6 ? 'red' : 'blue';
                 }
                 blueCar.style.left = winner === 'blue' ? '80%' : '0';
                 redCar.style.left = winner === 'red' ? '80%' : '0';
