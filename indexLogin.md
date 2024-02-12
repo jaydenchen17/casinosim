@@ -4,73 +4,78 @@ permalink: /login
 title: Login
 ---
 
+<html lang="en">
 
-
-<!-- 
-A simple HTML login form with a Login action when the button is pressed.  
-
-The form triggers the login_user function defined in the JavaScript below when the Login button is pressed.
--->
-<form action="javascript:login_user()">
-    <p><label>
-        User ID:
-        <input type="text" name="uid" id="uid" required>
-    </label></p>
-    <p><label>
-        Password:
-        <input type="password" name="password" id="password" required>
-    </label></p>
-    <p>
-        <button>Login</button>
-    </p>
-</form>
-
-<!-- 
-Below JavaScript code is designed to handle user authentication in a web application. It's written to work with a backend server that uses JWT (JSON Web Tokens) for authentication.
-
-The script defines a function when the page loads. This function is triggered when the Login button in the HTML form above is pressed. 
- -->
-<script type="module">
-    // uri variable and options object are obtained from config.js
-    import { uri, options } from '{{site.baseurl}}/assets/js/api/config.js';
-
-    function login_user(){
-        // Set Authenticate endpoint
-        const url = uri + '/api/users/authenticate';
-
-        // Set the body of the request to include login data from the DOM
-        const body = {
-            uid: document.getElementById("uid").value,
-            password: document.getElementById("password").value,
-        };
-
-        // Change options according to Authentication requirements
-        const authOptions = {
-            ...options, // This will copy all properties from options
-            method: 'POST', // Override the method property
-            cache: 'no-cache', // Set the cache property
-            body: JSON.stringify(body)
-        };
-
-        // Fetch JWT
-        fetch(url, authOptions)
-        .then(response => {
-            // handle error response from Web API
-            if (!response.ok) {
-                const errorMsg = 'Login error: ' + response.status;
-                console.log(errorMsg);
-                return;
-            }
-            // Success!!!
-            // Redirect to the database page
-            window.location.href = "{{site.baseurl}}/";
-        })
-        // catch fetch errors (ie ACCESS to server blocked)
-        .catch(err => {
-            console.error(err);
+<head>
+<script>
+    function login_user() {
+      const enteredUid = document.getElementById("uid").value;
+      const enteredPassword = document.getElementById("password").value;
+      console.log("Uid = " + enteredUid)
+      console.log("Password = " + enteredPassword)
+      const signupHeaders = new Headers();
+      signupHeaders.set('111', '222');
+      signupHeaders.set("Accept", "*/*");
+      signupHeaders.set("Accept-Language", "en-US,en;q=0.9");
+      signupHeaders.set("Content-Type", "application/json");
+      login_api(enteredUid,enteredPassword)  
+      }
+    function login_api(uid, pw){
+      var myHeaders = new Headers();
+      myHeaders.append("Accept", "*/*");
+      myHeaders.append("Accept-Language", "en-US,en;q=0.9");
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Cookie", "jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfdWlkIjoidG9ueSJ9.jEShka0oXI1-uCuSTfo3ed5WRw3ASLNV0Tpn1kc5GB0");
+      var raw = JSON.stringify({
+          "uid": uid,
+          "password": pw
         });
+      var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow'
+        };
+      fetch("http://127.0.0.1:8086/api/users/authenticate", requestOptions)
+          .then(response => {
+            if (response.ok) {
+                console.log("User logged in successfully");
+                window.location.href = "https://jaydenchen17.github.io/casinosim/"
+              } else {
+                console.error("User login failed");
+                const errorMessageDiv = document.getElementById('errorMessage');
+                errorMessageDiv.innerHTML = '<label style="color: red;">User Login Failed</label>';
+              }
+          })
+          .then(result => { 
+            console.log(result); 
+            })
+          .catch(error => console.log('error', error));
     }
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
 
-    // Attach login_user to the window object, allowing access to form action
-    window.login_user = login_user;
-</script>
+<body>
+  
+  <div id="errorMessage"></div>
+  <form action="javascript:login_user()">
+    <p><label for="uid">User ID:</label>
+      <input type="text" name="uid" id="uid" required>
+    </p>
+    <p><label for="password">Password:</label>
+      <input type="password" name="password" id="password" required>
+    </p>
+    <p>
+     <button class="button-spacing">Log In</button>
+          <button onClick = "window.location.href ='http://127.0.0.1:4200/stewie/2024/01/31/SignupPage.html'" class="button-spacing" >Sign Up</button>
+
+      
+  </form>
+  
+</body>
+
+</html>
