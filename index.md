@@ -46,7 +46,7 @@ title: Student Blog
     </div>
     <a href="https://jaydenchen17.github.io/casinosim/login" class="button">Login</a>
     <div>
-    <a href="" class="https://jaydenchen17.github.io/casinosim/signup">Signup</a>
+    <a href="https://jaydenchen17.github.io/casinosim/signup" class="button">Signup</a>
 </body>
 </html>
 
