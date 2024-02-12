@@ -1,10 +1,8 @@
 ---
-layout: post
+layout: default
 permalink: /signup
-title: Signup Page
+title: Signup
 ---
-
-
 
 <html lang="en">
 
@@ -49,7 +47,7 @@ title: Signup Page
             if (response.ok) {
                 console.log("Successfully Signed Up");
                 alert("Account has been created. You will be directed to login page shortly.");
-                window.location.href = "http://127.0.0.1:4200/login"
+                window.location.href = "https://jaydenchen17.github.io/casinosim/login"
               } else {
                 console.error("Sign Up Failed");
                 // You can handle failed login attempts here
@@ -89,10 +87,3 @@ title: Signup Page
     <button class="button-spacing">Submit</button>
     </form>
   </div>
-   
-
-   
-</body>
-
-</html>
-

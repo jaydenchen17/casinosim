@@ -40,7 +40,7 @@ title: Login
           .then(response => {
             if (response.ok) {
                 console.log("User logged in successfully");
-                window.location.href = "https://jaydenchen17.github.io/casinosim/"
+                window.location.href = "https://jaydenchen17.github.io/casinosim/casinoroom"
               } else {
                 console.error("User login failed");
                 const errorMessageDiv = document.getElementById('errorMessage');
@@ -53,22 +53,3 @@ title: Login
           .catch(error => console.log('error', error));
     }
   </script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-  
-  <div id="errorMessage"></div>
-  <form action="javascript:login_user()">
-    <p><label for="uid">User ID:</label>
-      <input type="text" name="uid" id="uid" required>
-    </p>
-    <p><label for="password">Password:</label>
-      <input type="password" name="password" id="password" required>
-    </p>
-    <p>
-     <button class="button-spacing">Log In</button>
-          <button onClick = "window.location.href ='http://127.0.0.1:4200/stewie/2024/01/31/SignupPage.html'" class="button-spacing" >Sign Up</button>
