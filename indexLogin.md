@@ -72,10 +72,3 @@ title: Login
     <p>
      <button class="button-spacing">Log In</button>
           <button onClick = "window.location.href ='http://127.0.0.1:4200/stewie/2024/01/31/SignupPage.html'" class="button-spacing" >Sign Up</button>
-
-      
-  </form>
-  
-</body>
-
-</html>
