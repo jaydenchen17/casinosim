@@ -72,10 +72,3 @@ title: Login
     <p>
      <button class="button-spacing">Log In</button>
           <button onClick = "window.location.href ='https://jaydenchen17.github.io/casinosim/signup'" class="button-spacing" >Sign Up</button>
-
-      
-  </form>
-  
-</body>
-
-</html>

@@ -86,5 +86,6 @@ permalink: /Dice_game
             alert(resultMessage);
         }
     </script>
+<a href="https://jaydenchen17.github.io/casinosim/casinoroom" class="button">Back to Game Room</a>
 </body>
 </html>

@@ -243,6 +243,6 @@ permalink: /blackjack
       updateDealerScore();
     }
   </script>
-<a href=" " class="button">Back to Home</a>
+<a href="https://jaydenchen17.github.io/casinosim/casinoroom" class="button">Back to Game Room</a>
 </body>
 </html>
