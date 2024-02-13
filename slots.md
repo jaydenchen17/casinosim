@@ -10,6 +10,17 @@ permalink: /slots
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Slot Machine</title>
   <style>
+    body {
+      background-image: url('images/slotmachine.png');
+      background-size: 60%;
+      background-position: center center;
+      background-attachment: fixed;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      color: #ffffff; /* Text color */
+      text-align: center;
+      padding: 50px; /* Add padding to the content */
+    }
     .slot-machine {
       text-align: center;
       border: 10px solid gold; /* Golden border around the entire slot machine */
@@ -19,6 +30,7 @@ permalink: /slots
     }
     .reel-container {
       margin-bottom: 20px; /* Add some space between rows */
+      background-color: white; /* White backdrop for the slot container */
     }
     .row-divider {
       width: 100%;
@@ -35,32 +47,32 @@ permalink: /slots
       width: 100px; /* Adjust as needed */
       margin: 0 10px; /* Adjust as needed */
     }
+
   </style>
 </head>
 <body>
   <div class="slot-machine">
     <div class="reel-container">
       <div class="reel">
-        <img src="images/slotcherry.png" alt="Cherry">
+        <img src="images/slotbar.png" alt="Cherry">
         <img src="images/slotbar.png" alt="Bar">
         <img src="images/slot7.png" alt="Seven">
-        <!-- Add more images here -->
       </div>
     </div>
     <div class="row-divider"></div> <!-- Divider between rows -->
     <div class="reel-container">
       <div class="reel">
         <img src="images/slotcherry.png" alt="Cherry">
-        <img src="images/slotbar.png" alt="Bar">
-        <img src="images/slot7.png" alt="Seven">
+        <img src="images/slot7.png" alt="Bar">
+        <img src="images/slotclover.png" alt="Seven">
         <!-- Add more images here -->
       </div>
     </div>
     <div class="row-divider"></div> <!-- Divider between rows -->
     <div class="reel-container">
       <div class="reel">
-        <img src="images/slotcherry.png" alt="Cherry">
-        <img src="images/slotbar.png" alt="Bar">
+        <img src="images/slotclover.png" alt="Cherry">
+        <img src="images/slotcherry.png" alt="Bar">
         <img src="images/slot7.png" alt="Seven">
         <!-- Add more images here -->
       </div>

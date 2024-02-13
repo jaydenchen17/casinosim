@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   const reels = document.querySelectorAll('.reel');
   const spinBtn = document.getElementById('spin-btn');
-  const symbols = ['slotcherry', 'slotbar', 'slot7']; // Updated symbols
+  const symbols = ['slotcherry', 'slotbar', 'slot7','slotclover']; // Updated symbols
   const imagesPath = 'images/';
 
   function spin() {
