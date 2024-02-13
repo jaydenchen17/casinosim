@@ -36,7 +36,7 @@ title: Login
           body: raw,
           redirect: 'follow'
         };
-      fetch("http://127.0.0.1:8987/api/users/authenticate", requestOptions)
+      fetch("http://casinosim.stu.nighthawkcodingsociety.com/api/users/authenticate", requestOptions)
           .then(response => {
             if (response.ok) {
                 console.log("User logged in successfully");
