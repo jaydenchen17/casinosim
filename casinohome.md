@@ -59,7 +59,7 @@ permalink: /casinoroom
         <h1>Welcome to the Casino Room</h1>
         <p>Choose the game you'd like to participate in!</p>       
         <div class="button-container">
-            <a href="Slots" class="button">Slots</a>
+            <a href="slots" class="button">Slots</a>
             <a href="blackjack" class="button">Blackjack</a>
             <a href="Dice_game" class="button">Dice Game</a>
             <a href="racebet" class="button">Race Track</a>
