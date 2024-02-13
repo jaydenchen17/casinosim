@@ -47,6 +47,21 @@ permalink: /slots
       width: 100px; /* Adjust as needed */
       margin: 0 10px; /* Adjust as needed */
     }
+    #spin-btn {
+      padding: 10px 20px; /* Add padding */
+      font-size: 30px; /* Increase font size */
+      font-family: 'Cinzel'; /* Change font */
+      background-color: #ffca26; /* Button background color */
+      color: #ffffff; /* Button text color (white) */
+      border: 2px solid #ff0000; /* Red border */
+      border-radius: 5px; /* Rounded corners */
+      cursor: pointer; /* Change cursor to pointer on hover */
+      transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+    }
+    #spin-btn:hover {
+      background-color: #ffc30d; /* Darker background color on hover */
+      border-color: #ff0000; /* Red border color on hover */
+    }
 
   </style>
 </head>
@@ -77,7 +92,7 @@ permalink: /slots
         <!-- Add more images here -->
       </div>
     </div>
-    <button id="spin-btn">Spin</button>
+    <button id="spin-btn">SPIN</button>
   </div>
   
   <script src="slots.js"></script>

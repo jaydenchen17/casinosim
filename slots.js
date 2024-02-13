@@ -4,8 +4,20 @@ document.addEventListener('DOMContentLoaded', function() {
   const symbols = ['slotcherry', 'slotbar', 'slot7','slotclover']; // Updated symbols
   const imagesPath = 'images/';
 
+  let userBalance = 100; // Initial user balance
+  let userBet;
+
   function spin() {
     try {
+      // Prompt the user to place a wager
+      userBet = prompt('Enter your wager (minimum $10):');
+      if (userBet === null) return; // Exit if the user cancels
+      userBet = parseInt(userBet);
+      if (isNaN(userBet) || userBet < 10 || userBet > userBalance) {
+        alert('Invalid wager. Please enter a valid amount.');
+        return;
+      }
+
       const spins = 15; // Number of spins
       const spinDelay = 200; // Delay between each spin in milliseconds
       let spinCount = 0;
@@ -48,16 +60,19 @@ document.addEventListener('DOMContentLoaded', function() {
       if (symbolsInRow.every(symbol => symbol === symbolsInRow[0])) {
         if (symbolsInRow[0] === 'slot7' && i === 1) {
           // Jackpot in the middle row with 7s
-          alert('Congratulations! You win the jackpot!');
+          userBalance += userBet * 5; // Jackpot payout (5 times the wager)
+          alert('Congratulations! You win the jackpot! Your balance: $' + userBalance);
         } else {
           // Winning combination in other rows
-          alert('Congratulations! You win!');
+          userBalance += userBet * 2; // Regular win payout (double the wager)
+          alert('Congratulations! You win! Your balance: $' + userBalance);
         }
         return; // Exit function if a winning combination is found
       }
     }
     // If no winning combination is found
-    alert('Sorry, try again!');
+    userBalance -= userBet; // Deduct the wager from the user's balance
+    alert('Sorry, try again! Your balance: $' + userBalance);
   }
 
   spinBtn.addEventListener('click', spin);
