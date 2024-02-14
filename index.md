@@ -44,7 +44,7 @@ title: Student Blog
         <h1>Welcome to Casino Sim</h1>
         <p>Gamble without the risk of losing any real money! Log in or create an account to start!</p>
     </div>
-    <a href="https://jaydenchen17.github.io/casinosim/login" class="button">Login</a>
+    <a href="http://127.0.0.1:4200/casinosim/login" class="button">Login</a>
     <div>
-    <a href="https://jaydenchen17.github.io/casinosim/signup" class="button">Signup</a>
+    <a href="http://127.0.0.1:4200/casinosim/signup" class="button">Signup</a>
 
