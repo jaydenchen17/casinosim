@@ -68,6 +68,7 @@ permalink: /blackjack
   <div class="textbox">
     <h1>Simple Blackjack Game</h1>
     <p id="bet-info">Place your bet and click 'Deal' to start.</p>
+    <p id="balance">Balance: $50</p>
     <div id="game">
       <div class="button-container">
         <button class="button" onclick="placeBet()">Place Bet</button>
@@ -94,17 +95,20 @@ permalink: /blackjack
     let playerScore = 0;
     let dealerScore = 0;
     let userBet = 0;
+    let balance = 50; // Starting balance
 
     function placeBet() {
-      userBet = prompt("Place your bet (at least $5):");
+      userBet = parseInt(prompt("Place your bet (at least $5):"));
 
-      if (userBet >= 5) {
+      if (!isNaN(userBet) && userBet >= 5 && userBet <= balance) {
+        balance -= userBet;
+        document.getElementById('balance').innerText = `Balance: $${balance}`;
         document.getElementById('bet-info').innerText = 'Bet placed. Click "Deal" to start.';
         document.getElementById('dealButton').disabled = false;
         document.getElementById('hitButton').disabled = true;
         document.getElementById('standButton').disabled = true;
       } else {
-        alert("Please place a valid bet (at least $5).");
+        alert("Please place a valid bet (at least $5 and within your balance).");
       }
     }
 
@@ -227,6 +231,8 @@ permalink: /blackjack
     }
 
     function endGame() {
+      balance += playerScore > dealerScore ? userBet * 2 : playerScore < dealerScore ? 0 : userBet;
+      document.getElementById('balance').innerText = `Balance: $${balance}`;
       document.getElementById('bet-info').innerText += ' Click "Place Bet" to play again.';
       document.getElementById('dealButton').disabled = true;
       document.getElementById('hitButton').disabled = true;

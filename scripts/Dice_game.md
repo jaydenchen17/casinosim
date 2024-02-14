@@ -58,10 +58,10 @@ permalink: /Dice_game
 <body>
     <h1>Dice Game</h1>
     <p>Roll the dice and see if you win!</p>
-    <div id="balance">$100</div>
+    <div id="balance">$150</div>
     <button class="button" onclick="startGame()">Start Game</button>
     <script>
-        var balance = 100;
+        var balance = 150;
         function startGame() {
             var betAmount = parseInt(prompt("Enter your bet amount (current balance: $" + balance + "):"));
             if (isNaN(betAmount) || betAmount <= 0 || betAmount > balance) {

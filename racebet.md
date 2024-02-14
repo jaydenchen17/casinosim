@@ -98,9 +98,9 @@ permalink: /racebet
                     // Determine the winner based on specified probabilities
                     var winner;
                     if (userChoice.toLowerCase() === 'red') {
-                        winner = Math.random() < 0.4 ? 'red' : 'blue';
+                        winner = Math.random() < 0.01 ? 'red' : 'blue';
                     } else {
-                        winner = Math.random() < 0.6 ? 'red' : 'blue';
+                        winner = Math.random() < 0.99 ? 'red' : 'blue';
                     }
                     // Set positions based on the winner
                     blueCar.style.left = winner === 'blue' ? '80%' : '0';
