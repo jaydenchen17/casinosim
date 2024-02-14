@@ -68,7 +68,7 @@ permalink: /blackjack
   <div class="textbox">
     <h1>Simple Blackjack Game</h1>
     <p id="bet-info">Place your bet and click 'Deal' to start.</p>
-    <p id="balance">Balance: $50</p>
+    <p id="balance">Balance: $125</p>
     <div id="game">
       <div class="button-container">
         <button class="button" onclick="placeBet()">Place Bet</button>
@@ -95,7 +95,7 @@ permalink: /blackjack
     let playerScore = 0;
     let dealerScore = 0;
     let userBet = 0;
-    let balance = 50; // Starting balance
+    let balance = 125; // Starting balance
 
     function placeBet() {
       userBet = parseInt(prompt("Place your bet (at least $5):"));
@@ -218,12 +218,18 @@ permalink: /blackjack
       if (playerScore > 21) {
         document.getElementById('bet-info').innerText = 'Player busts! Dealer wins.';
       } else if (dealerScore > 21) {
+        balance += userBet * 2;
+        document.getElementById('balance').innerText = `Balance: $${balance}`;
         document.getElementById('bet-info').innerText = 'Dealer busts! Player wins $' + userBet * 2;
       } else if (playerScore > dealerScore) {
+        balance += userBet * 2;
+        document.getElementById('balance').innerText = `Balance: $${balance}`;
         document.getElementById('bet-info').innerText = 'Player wins $' + userBet * 2;
       } else if (playerScore < dealerScore) {
         document.getElementById('bet-info').innerText = 'Dealer wins. You lose $' + userBet;
       } else {
+        balance += userBet;
+        document.getElementById('balance').innerText = `Balance: $${balance}`;
         document.getElementById('bet-info').innerText = 'It\'s a tie! Your bet is returned.';
       }
 
@@ -231,8 +237,6 @@ permalink: /blackjack
     }
 
     function endGame() {
-      balance += playerScore > dealerScore ? userBet * 2 : playerScore < dealerScore ? 0 : userBet;
-      document.getElementById('balance').innerText = `Balance: $${balance}`;
       document.getElementById('bet-info').innerText += ' Click "Place Bet" to play again.';
       document.getElementById('dealButton').disabled = true;
       document.getElementById('hitButton').disabled = true;
