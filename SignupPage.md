@@ -42,12 +42,12 @@ title: Signup
           body: raw,
           redirect: 'follow'
         };
-      fetch("http://127.0.0.1:8987/api/users/", requestOptions)
+      fetch("https://casinosim.stu.nighthawkcodingsociety.com/api/users/", requestOptions)
           .then(response => {
             if (response.ok) {
                 console.log("Successfully Signed Up");
                 alert("Account has been created. You will be directed to login page shortly.");
-                window.location.href = "http://127.0.0.1:4200/casinosim/login"
+                window.location.href = "https://jaydenchen17.github.io/casinosim/login"
               } else {
                 console.error("Sign Up Failed");
                 // You can handle failed login attempts here

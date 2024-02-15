@@ -36,11 +36,11 @@ title: Login
           body: raw,
           redirect: 'follow'
         };
-      fetch("http://127.0.0.1:8987/api/users/authenticate", requestOptions)
+      fetch("https://casinosim.stu.nighthawkcodingsociety.com/api/users/authenticate", requestOptions)
           .then(response => {
             if (response.ok) {
                 console.log("User logged in successfully");
-                window.location.href = "http://127.0.0.1:4200/casinosim/casinoroom"
+                window.location.href = "https://jaydenchen17.github.io/casinosim/casinoroom"
               } else {
                 console.error("User login failed");
                 const errorMessageDiv = document.getElementById('errorMessage');
@@ -71,4 +71,4 @@ title: Login
     </p>
     <p>
      <button class="button-spacing">Log In</button>
-          <button onClick = "window.location.href ='http://127.0.0.1:4200/casinosim/signup'" class="button-spacing" >Sign Up</button>
+          <button onClick = "window.location.href ='https://jaydenchen17.github.io/casinosim/signup'" class="button-spacing" >Sign Up</button>

@@ -100,6 +100,6 @@ permalink: /slots
 <br>
 <br>
 <body>
-<a href="http://127.0.0.1:4200/casinosim/casinoroom" class="button">Back to Game Room</a>
+<a href="https://jaydenchen17.github.io/casinosim/casinoroom" class="button">Back to Game Room</a>
 </body>
 </html>
