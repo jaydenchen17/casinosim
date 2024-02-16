@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
   const reels = document.querySelectorAll('.reel');
   const spinBtn = document.getElementById('spin-btn');
-  const symbols = ['slotcherry', 'slotbar', 'slot7','slotclover']; // Updated symbols
+  const symbols = ['slotcherry', 'slotbar', 'slot7','slotclover','slotcard']; // Updated symbols
   const imagesPath = 'images/';
-
+  
+  let spinSound = new Audio('slotmachinesound.mp3'); // Create an audio object
+  
   let userBalance = 100; // Initial user balance
   let userBet;
 
@@ -17,35 +19,55 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Invalid wager. Please enter a valid amount.');
         return;
       }
-
-      const spins = 15; // Number of spins
-      const spinDelay = 200; // Delay between each spin in milliseconds
-      let spinCount = 0;
-
-      const spinInterval = setInterval(() => {
-        // Spin each reel
-        reels.forEach(reel => {
-          reel.innerHTML = '';
-          for (let i = 0; i < 3; i++) {
-            const randomIndex = Math.floor(Math.random() * symbols.length);
-            const symbol = symbols[randomIndex];
-            const img = document.createElement('img');
-            img.src = imagesPath + symbol + '.png';
-            img.alt = symbol;
-            reel.appendChild(img);
-          }
-        });
-
-        spinCount++;
-        if (spinCount === spins) {
-          clearInterval(spinInterval);
-          // Add a delay before checking for winning combinations
-          setTimeout(checkWin, 1000);
-        }
-      }, spinDelay);
+      
+      // Play the spin sound
+      spinSound.play();
+      
+      // Spin the first column 10 times
+      spinColumn(0, 15, () => {
+        // After spinning the first column, delay for one second
+        setTimeout(() => {
+          // Spin the middle column 10 times
+          spinColumn(1, 15, () => {
+            // After spinning the middle column, delay for one second
+            setTimeout(() => {
+              // Spin the right column 10 times
+              spinColumn(2, 15, () => {
+                // After spinning the third column, wait for one second before checking for winning combinations
+                setTimeout(() => {
+                  checkWin();
+                }, 500);
+              });
+            }, 500);
+          });
+        }, 500);
+      });
     } catch (error) {
       console.error('An error occurred while spinning:', error);
     }
+  }
+
+  // Function to spin a single column a specified number of times
+  function spinColumn(columnIndex, spins, callback) {
+    let spinCount = 0;
+
+    const spinInterval = setInterval(() => {
+      reels[columnIndex].innerHTML = ''; // Clear the column before spinning
+      for (let i = 0; i < 3; i++) {
+        const randomIndex = Math.floor(Math.random() * symbols.length);
+        const symbol = symbols[randomIndex];
+        const img = document.createElement('img');
+        img.src = imagesPath + symbol + '.png';
+        img.alt = symbol;
+        reels[columnIndex].appendChild(img); // Append the symbol to the column
+      }
+
+      spinCount++;
+      if (spinCount === spins) {
+        clearInterval(spinInterval); // Stop spinning when reaching the desired number of spins
+        callback(); // Execute the callback function after spinning
+      }
+    }, 100); // Spin delay (adjust as needed)
   }
 
   // Function to check for winning combinations
@@ -53,25 +75,44 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check horizontal rows
     for (let i = 0; i < 3; i++) {
       const symbolsInRow = [
+        reels[0].children[i].alt,
+        reels[1].children[i].alt,
+        reels[2].children[i].alt
+      ];
+      if (symbolsInRow.every(symbol => symbol === symbolsInRow[0])) {
+        handleWin();
+        return; // Exit function if a winning combination is found
+      }
+    }
+
+    // Check vertical columns
+    for (let i = 0; i < 3; i++) {
+      const symbolsInColumn = [
         reels[i].children[0].alt,
         reels[i].children[1].alt,
         reels[i].children[2].alt
       ];
-      if (symbolsInRow.every(symbol => symbol === symbolsInRow[0])) {
-        if (symbolsInRow[0] === 'slot7' && i === 1) {
-          // Jackpot in the middle row with 7s
-          userBalance += userBet * 5; // Jackpot payout (5 times the wager)
-          alert('Congratulations! You win the jackpot! Your balance: $' + userBalance);
-        } else {
-          // Winning combination in other rows
-          userBalance += userBet * 2; // Regular win payout (double the wager)
-          alert('Congratulations! You win! Your balance: $' + userBalance);
-        }
+      if (symbolsInColumn.every(symbol => symbol === symbolsInColumn[0])) {
+        handleWin();
         return; // Exit function if a winning combination is found
       }
     }
+
     // If no winning combination is found
-    userBalance -= userBet; // Deduct the wager from the user's balance
+    handleLoss();
+  }
+
+  // Function to handle winning
+  function handleWin() {
+    // Update user balance and display winning message
+    userBalance += userBet * 2; // Double the wager for winning
+    alert('Congratulations! You win! Your balance: $' + userBalance);
+  }
+
+  // Function to handle loss
+  function handleLoss() {
+    // Deduct the wager from the user's balance and display losing message
+    userBalance -= userBet;
     alert('Sorry, try again! Your balance: $' + userBalance);
   }
 

@@ -29,8 +29,9 @@ permalink: /slots
       margin: auto; /* Center the slot machine horizontally */
     }
     .reel-container {
-      margin-bottom: 20px; /* Add some space between rows */
-      background-color: white; /* White backdrop for the slot container */
+      margin-right: 20px; /* Add some space between reels */
+      display: inline-block; /* Align reels horizontally */
+      vertical-align: top; /* Align reels to the top */
     }
     .row-divider {
       width: 100%;
@@ -40,27 +41,23 @@ permalink: /slots
     }
     .reel {
       display: flex;
-      flex-direction: row; /* Align symbols horizontally */
-      justify-content: center; /* Center symbols horizontally */
+      flex-direction: column; /* Align symbols vertically */
+      align-items: center; /* Center symbols horizontally */
+      margin-bottom: 10px; /* Add some space between symbols */
     }
     .reel img {
       width: 100px; /* Adjust as needed */
-      margin: 0 10px; /* Adjust as needed */
+      margin: 5px 0; /* Adjust as needed */
     }
     #spin-btn {
-      padding: 10px 20px; /* Add padding */
-      font-size: 30px; /* Increase font size */
-      font-family: 'Cinzel'; /* Change font */
-      background-color: #ffca26; /* Button background color */
-      color: #ffffff; /* Button text color (white) */
-      border: 2px solid #ff0000; /* Red border */
-      border-radius: 5px; /* Rounded corners */
-      cursor: pointer; /* Change cursor to pointer on hover */
-      transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
-    }
-    #spin-btn:hover {
-      background-color: #ffc30d; /* Darker background color on hover */
-      border-color: #ff0000; /* Red border color on hover */
+      background-color: gold;
+      border: none;
+      color: red;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 20px; /* Add some space above the button */
     }
 
   </style>
@@ -69,34 +66,35 @@ permalink: /slots
   <div class="slot-machine">
     <div class="reel-container">
       <div class="reel">
-        <img src="images/slotbar.png" alt="Cherry">
+        <img src="images/slotcard.png" alt="Card">
         <img src="images/slotbar.png" alt="Bar">
         <img src="images/slot7.png" alt="Seven">
       </div>
     </div>
-    <div class="row-divider"></div> <!-- Divider between rows -->
     <div class="reel-container">
       <div class="reel">
         <img src="images/slotcherry.png" alt="Cherry">
-        <img src="images/slot7.png" alt="Bar">
-        <img src="images/slotclover.png" alt="Seven">
+        <img src="images/slot7.png" alt="Seven">
+        <img src="images/slotclover.png" alt="Clover">
         <!-- Add more images here -->
       </div>
     </div>
-    <div class="row-divider"></div> <!-- Divider between rows -->
     <div class="reel-container">
       <div class="reel">
-        <img src="images/slotclover.png" alt="Cherry">
-        <img src="images/slotcherry.png" alt="Bar">
+        <img src="images/slotclover.png" alt="Clover">
+        <img src="images/slotcard.png" alt="Card">
         <img src="images/slot7.png" alt="Seven">
         <!-- Add more images here -->
       </div>
     </div>
-    <button id="spin-btn">SPIN</button>
   </div>
-  
+  <br>
+  <br>
+  <button id="spin-btn">Spin</button>
   <script src="slots.js"></script>
 </body>
+</html>
+
 <br>
 <br>
 <body>
