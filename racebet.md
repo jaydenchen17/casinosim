@@ -84,9 +84,8 @@ permalink: /racebet
         var userBet;
         var userChoice;
         function startRace() {
-            // Prompt the user to input a wager
+            document.getElementById('raceSound').play();
             userBet = prompt("Enter the amount you want to wager (at least $10):");
-            // Check if the input is valid
             if (userBet >= 10) {
                 // Prompt the user to pick a car
                 userChoice = prompt("Choose the car you want to bet on (blue or red):");
@@ -147,57 +146,11 @@ permalink: /racebet
             stopCar(redCar);
         }
     </script>
-    <script>
-    var blueCarInterval, redCarInterval;
-    var userBalance = 200;
-    var userBet;
-    var userChoice;
-    function startRace() {
-        userBet = prompt("Enter the amount you want to wager (at least $10):");
-        if (userBet >= 10 && userBet <= userBalance) {
-            userBalance -= userBet;
-            alert("Your current balance: $" + userBalance);
-            userChoice = prompt("Choose the car you want to bet on (blue or red):");
-            if (userChoice.toLowerCase() === 'blue' || userChoice.toLowerCase() === 'red') {
-                var blueCar = document.getElementById('blueCar');
-                var redCar = document.getElementById('redCar');
-                var winner;
-                if (userChoice.toLowerCase() === 'red') {
-                    winner = Math.random() < 0.4 ? 'red' : 'blue';
-                } else {
-                    winner = Math.random() < 0.6 ? 'red' : 'blue';
-                }
-                blueCar.style.left = winner === 'blue' ? '80%' : '0';
-                redCar.style.left = winner === 'red' ? '80%' : '0';
-                document.getElementById('raceButton').disabled = true;
-                setTimeout(function () {
-                    var resultMessage;
-                    if (winner === userChoice.toLowerCase()) {
-                        userBalance += userBet * 2;
-                        resultMessage = 'Congratulations! You won $' + userBet * 2;
-                    } else {
-                        resultMessage = 'Sorry, you lost $' + userBet;
-                    }
-                    alert(resultMessage + "\nYour current balance: $" + userBalance);
-                    stopCars(); 
-                }, 3000);  
-                blueCarInterval = setInterval(function () {
-                    moveCar(blueCar, 5);
-                }, 80);
-                redCarInterval = setInterval(function () {
-                    moveCar(redCar, 4.99); 
-                }, 80);
-            } else {
-                alert("Please choose a valid car (blue or red).");
-            }
-        } else {
-            alert("Please enter a valid wager amount (at least $10 and within your balance).");
-        }
-    }
-</script>
 
+    
 </head>
 <body>
+    <audio id="raceSound" src="racetracksound.mp3"></audio>
     <div class="race-track">
         <img src="images/racetrack.png" alt="Race Track" width="1000" height="200">
         <img id="blueCar" class="car" src="images/blueracecar.png" alt="Blue Car" width="100">
