@@ -63,5 +63,5 @@ permalink: /casinoroom
             <a href="blackjack" class="button">Blackjack</a>
             <a href="Dice_game" class="button">Dice Game</a>
             <a href="racebet" class="button">Race Track</a>
-            <a href="https://jaydenchen17.github.io/casinosim/casinoroom" class="button">Back to Home</a>
+            <a href="https://jaydenchen17.github.io/casinosim/" class="button">Back to Home</a>
 
