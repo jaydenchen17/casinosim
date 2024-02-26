@@ -42,7 +42,7 @@ title: Signup
           body: raw,
           redirect: 'follow'
         };
-      fetch("https://casinosim.stu.nighthawkcodingsociety.com/api/users/", requestOptions)
+      fetch("http://localhost:8086/api/users/", requestOptions)
           .then(response => {
             if (response.ok) {
                 console.log("Successfully Signed Up");
@@ -86,4 +86,4 @@ title: Signup
     </p>
     <button class="button-spacing">Submit</button>
     </form>
-  </div>
+
