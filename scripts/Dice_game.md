@@ -4,6 +4,7 @@ title: Roulette
 permalink: /Dice_game
 ---
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,16 +16,10 @@ permalink: /Dice_game
             background-size: cover;
             font-family: Arial, sans-serif;
             padding: 20px;
-            position: relative;
         }
-        h1 {
-            font-size: 60px;
+        h1, p {
             color: white;
             text-shadow: 2px 2px 2px black;
-        }
-        p {
-            font-size: 24px;
-            color: white;
         }
         .button {
             background-color: #4CAF50;
@@ -44,9 +39,6 @@ permalink: /Dice_game
             background-color: #45a049;
         }
         #balance {
-            position: absolute;
-            top: 20px;
-            right: 20px;
             background-color: white;
             color: black;
             padding: 15px;
@@ -63,29 +55,56 @@ permalink: /Dice_game
     <script>
         var balance = 150;
         function startGame() {
-            var betAmount = parseInt(prompt("Enter your bet amount (current balance: $" + balance + "):"));
+            var betAmount = getBetAmount();
+            if (!isValidBet(betAmount)) return;
+            var diceNumber = getDiceNumber();
+            if (!isValidDiceNumber(diceNumber)) return;
+            var diceResult = rollDice();
+            var resultMessage = getResultMessage(diceResult, diceNumber, betAmount);
+            updateBalance(resultMessage, betAmount);
+            alert(resultMessage);
+        }
+        function getBetAmount() {
+            return parseInt(prompt("Enter your bet amount (current balance: $" + balance + "):"));
+        }
+        function isValidBet(betAmount) {
             if (isNaN(betAmount) || betAmount <= 0 || betAmount > balance) {
                 alert("Invalid bet amount. Please enter a valid amount.");
-                return;
+                return false;
             }
-            var diceNumber = parseInt(prompt("Enter the dice number you want to bet on (1-6):"));
+            return true;
+        }
+        function getDiceNumber() {
+            return parseInt(prompt("Enter the dice number you want to bet on (1-6):"));
+        }
+        function isValidDiceNumber(diceNumber) {
             if (isNaN(diceNumber) || diceNumber < 1 || diceNumber > 6) {
                 alert("Invalid dice number. Please enter a number between 1 and 6.");
-                return;
+                return false;
             }
-            var diceResult = Math.floor(Math.random() * 6) + 1;
-            var resultMessage = "You rolled a " + diceResult + ". ";
+            return true;
+        }
+        function rollDice() {
+            return Math.floor(Math.random() * 6) + 1;
+        }
+        function getResultMessage(diceResult, diceNumber, betAmount) {
+            var message = "You rolled a " + diceResult + ". ";
             if (diceResult === diceNumber) {
-                resultMessage += "Congratulations! You win $" + (betAmount * 2) + "!";
+                message += "Congratulations! You win $" + (betAmount * 2) + "!";
+            } else {
+                message += "Sorry, you lose $" + betAmount + ".";
+            }
+            return message;
+        }
+        function updateBalance(resultMessage, betAmount) {
+            if (resultMessage.includes("Congratulations")) {
                 balance += betAmount;
             } else {
-                resultMessage += "Sorry, you lose $" + betAmount + ".";
                 balance -= betAmount;
             }
             document.getElementById('balance').innerText = "$" + balance;
-            alert(resultMessage);
         }
     </script>
-<a href="https://jaydenchen17.github.io/casinosim/casinoroom" class="button">Back to Game Room</a>
+    <a href="https://jaydenchen17.github.io/casinosim/casinoroom" class="button">Back to Game Room</a>
 </body>
 </html>
