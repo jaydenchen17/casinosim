@@ -24,23 +24,23 @@ document.addEventListener('DOMContentLoaded', function() {
       spinSound.play();
       
       // Spin the first column 10 times
-      spinColumn(0, 15, () => {
+      spinColumn(0, 5, () => {
         // After spinning the first column, delay for one second
         setTimeout(() => {
           // Spin the middle column 10 times
-          spinColumn(1, 15, () => {
+          spinColumn(1, 5, () => {
             // After spinning the middle column, delay for one second
             setTimeout(() => {
               // Spin the right column 10 times
-              spinColumn(2, 15, () => {
+              spinColumn(2, 5, () => {
                 // After spinning the third column, wait for one second before checking for winning combinations
                 setTimeout(() => {
                   checkWin();
-                }, 500);
+                }, 100);
               });
-            }, 500);
+            }, 100);
           });
-        }, 500);
+        }, 100);
       });
     } catch (error) {
       console.error('An error occurred while spinning:', error);
