@@ -61,6 +61,28 @@ permalink: /blackjack
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+        .flash-red {
+            animation: flash-red 0.5s infinite alternate;
+        }
+        .flash-green {
+            animation: flash-green 0.5s infinite alternate;
+        }
+        @keyframes flash-red {
+            from {
+                background-color: #ff0000; /* Red */
+            }
+            to {
+                background-color: #ffffff; /* White */
+            }
+        }
+        @keyframes flash-green {
+            from {
+                background-color: #00ff00; /* Green */
+            }
+            to {
+                background-color: #ffffff; /* White */
+            }
+        }
     </style>
 </head>
 <body>
@@ -141,6 +163,7 @@ permalink: /blackjack
       // Check for bust
       if (playerScore > 21) {
         document.getElementById('bet-info').innerText = 'Player busts! Dealer wins.';
+        document.getElementById('player-hand').classList.add('flash-red');
         endGame();
       }
     }
@@ -217,23 +240,29 @@ permalink: /blackjack
     function determineWinner() {
       if (playerScore > 21) {
         document.getElementById('bet-info').innerText = 'Player busts! Dealer wins.';
+        document.getElementById('player-hand').classList.add('flash-red');
+        endGame();
       } else if (dealerScore > 21) {
         balance += userBet * 2;
         document.getElementById('balance').innerText = `Balance: $${balance}`;
         document.getElementById('bet-info').innerText = 'Dealer busts! Player wins $' + userBet * 2;
+        document.getElementById('player-hand').classList.add('flash-green');
+        endGame();
       } else if (playerScore > dealerScore) {
         balance += userBet * 2;
         document.getElementById('balance').innerText = `Balance: $${balance}`;
         document.getElementById('bet-info').innerText = 'Player wins $' + userBet * 2;
+        document.getElementById('player-hand').classList.add('flash-green');
+        endGame();
       } else if (playerScore < dealerScore) {
         document.getElementById('bet-info').innerText = 'Dealer wins. You lose $' + userBet;
+        endGame();
       } else {
         balance += userBet;
         document.getElementById('balance').innerText = `Balance: $${balance}`;
         document.getElementById('bet-info').innerText = 'It\'s a tie! Your bet is returned.';
+        endGame();
       }
-
-      endGame();
     }
 
     function endGame() {
@@ -246,6 +275,7 @@ permalink: /blackjack
     function clearTable() {
       document.getElementById('player-cards').innerHTML = '';
       document.getElementById('dealer-cards').innerHTML = '';
+      document.getElementById('player-hand').classList.remove('flash-red', 'flash-green');
     }
 
     function updateScores() {
