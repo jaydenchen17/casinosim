@@ -60,28 +60,30 @@ permalink: /blackjack
             color: #000000; /* Text color */
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: flip 0.5s ease;
         }
+
+        @keyframes flip {
+            from { transform: rotateY(180deg); }
+            to { transform: rotateY(0deg); }
+        }
+
         .flash-red {
             animation: flash-red 0.5s infinite alternate;
         }
+
+        @keyframes flash-red {
+            from { background-color: red; }
+            to { background-color: #ffffff; }
+        }
+
         .flash-green {
             animation: flash-green 0.5s infinite alternate;
         }
-        @keyframes flash-red {
-            from {
-                background-color: #ff0000; /* Red */
-            }
-            to {
-                background-color: #ffffff; /* White */
-            }
-        }
+
         @keyframes flash-green {
-            from {
-                background-color: #00ff00; /* Green */
-            }
-            to {
-                background-color: #ffffff; /* White */
-            }
+            from { background-color: green; }
+            to { background-color: #ffffff; }
         }
     </style>
 </head>
@@ -201,6 +203,7 @@ permalink: /blackjack
     function displayCard(card, target) {
       const cardElement = document.createElement('div');
       cardElement.innerText = card;
+      cardElement.classList.add('card');
       document.getElementById(target).appendChild(cardElement);
     }
 
@@ -266,7 +269,6 @@ permalink: /blackjack
     }
 
     function endGame() {
-      document.getElementById('bet-info').innerText += ' Click "Place Bet" to play again.';
       document.getElementById('dealButton').disabled = true;
       document.getElementById('hitButton').disabled = true;
       document.getElementById('standButton').disabled = true;
