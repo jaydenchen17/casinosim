@@ -19,7 +19,7 @@ permalink: /Roulette
     }
     th, td {
         border: 1px solid #ddd;
-        padding: 10px;
+        padding: 10px; f
         text-align: center;
     }
     th {
